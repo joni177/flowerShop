@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowerShop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="img/logo.jpg" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><span class="text-warning">Flower</span>Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalog.html">Catalog</a>
+                    </li>
+                    <li><a href="login.html"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="28"
+                                fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg></a></li>
+                    <li>
+                        <a href="cart.html">
+                            <button id="cart" type="button" class="btn position-relative">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="28" fill="currentColor"
+                                    class="bi bi-cart" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                </svg>
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    0
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            </button>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/Home-Spa-Pack_1.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h5>Gift packages for your loved ones</h5>
+                    <p>Surprise your wife, friend, colleague or anyone you love</p>
+                    <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/man-using-cm.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h5>Easy to order online</h5>
+                    <p>Website is easy to use and feel free to contact us</p>
+                    <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/delivery.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h5>Fast and caring delivery</h5>
+                    <p>Same day delivery right to the doorstep</p>
+                    <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- about section starts -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-12">
+                    <div class="about-img">
+                        <img src="img/page1.jpg" alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+                    <div class="about-text">
+                        <h2>We Provide the Best Quality <br /> Services Ever</h2>
+                        <p>FlowerShop Design is a full-service floral design and gift studio that has successfully
+                            served the greater Tel Aviv area since 2006. Conveniently located in midtown Tel Aviv,
+                            FlowerShop creates inspiring floral works of art for corporate and private events, weddings
+                            and charity galas.
+                            Proud to be a part of the culture of TLV, FlowerShop is a participant in the TLV City
+                            Couture Fashion Week, having created a collection of couture dresses entirely from flowers.
+                            A partial list of clients include: HSBC, Deutsche Bank, German Mission of the United
+                            Nations, Sotheby’s Realty, The Bone Marrow Foundation, Emilio Pucci, Jacob and Co., Chloe,
+                            L’Oreal and Estee Lauder.</p>
+                        <a href="#" class="btn btn-warning">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about section Ends -->
+    <!-- services section Starts -->
+    <section class="services section-padding" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center pb-5">
+                        <h2>Our Services</h2>
+                        <p>We can help you decorate an event or trade fair with some beautiful <br>floral arrangements
+                            or
+                            send an unforgettable corporate gift.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-white text-center bg-dark pb-2">
+                        <div class="card-body">
+                            <i class="bi bi-laptop"></i>
+                            <h3 class="card-title">Best Quality</h3>
+                            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi
+                                modi temporibus alias iste. Accusantium?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-white text-center bg-dark pb-2">
+                        <div class="card-body">
+                            <i class="bi bi-journal"></i>
+                            <h3 class="card-title">Sustainability</h3>
+                            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi
+                                modi temporibus alias iste. Accusantium?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-white text-center bg-dark pb-2">
+                        <div class="card-body">
+                            <i class="bi bi-intersect"></i>
+                            <h3 class="card-title">Integrity</h3>
+                            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi
+                                modi temporibus alias iste. Accusantium?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- services section Ends -->
+
+    <!-- portfolio strats -->
+    <section id="portfolio" class="portfolio section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center pb-5">
+                        <h2>Our Favourites</h2>
+                        <p>View some of our <br> favorite produects.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-3">
+                    <div class="card text-light text-center bg-white pb-2">
+                        <div class="card-body text-dark">
+                            <div class="img-area mb-4">
+                                <img src="img/f1.jpg" class="img-fluid" alt="">
+                            </div>
+                            <h3 class="card-title">Lisianthus Mix Bouquet</h3>
+                            <p class="lead">From 140$</p>
+                            <a class="btn btn-warning" role="button" aria-disabled="true" href="catalog.html">See more
+                                >>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-3">
+                    <div class="card text-light text-center bg-white pb-2">
+                        <div class="card-body text-dark">
+                            <div class="img-area mb-4">
+                                <img src="img/f2.jpg" class="img-fluid" alt="">
+                            </div>
+                            <h3 class="card-title">White Chrysanthemum</h3>
+                            <p class="lead">From 50$</p>
+                            <a class="btn btn-warning" role="button" aria-disabled="true" href="catalog.html">See more
+                                >>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-3">
+                    <div class="card text-light text-center bg-white pb-2">
+                        <div class="card-body text-dark">
+                            <div class="img-area mb-4">
+                                <img src="img/f3.jpg" class="img-fluid" alt="">
+                            </div>
+                            <h3 class="card-title">Pink Delights Bouquet</h3>
+                            <p class="lead">From 25$</p>
+                            <a class="btn btn-warning" role="button" aria-disabled="true" href="catalog.html">See more
+                                >>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-3">
+                    <div class="card text-light text-center bg-white pb-2">
+                        <div class="card-body text-dark">
+                            <div class="img-area mb-4">
+                                <img src="img/f4.jpg" class="img-fluid" alt="">
+                            </div>
+                            <h3 class="card-title">Bouquet of Yellow Summer</h3>
+                            <p class="lead">From 15$</p>
+                            <a class="btn btn-warning" role="button" aria-disabled="true" href="catalog.html">See more
+                                >>></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- portfolio ends -->
+    <!-- team starts -->
+    <section class="team section-padding" id="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center pb-5">
+                        <h2>Our Team</h2>
+                        <p>Live Support is available <br>Mon-Fri 5am-7pm ET / 10am-Midnight GMT</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <img src="img/team-1.jpg" alt="" class="img-fluid rounded-circle">
+                            <h3 class="card-title py-2">Aviram Ashkenazi</h3>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
+                                nostrum illo tempora esse quibusdam.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <img src="img/team-2.jpg" alt="" class="img-fluid rounded-circle">
+                            <h3 class="card-title py-2">Ouriel Bensoussan</h3>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
+                                nostrum illo tempora esse quibusdam.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <img src="img/team-3.jpg" alt="" class="img-fluid rounded-circle">
+                            <h3 class="card-title py-2">Yonathan Hanania</h3>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
+                                nostrum illo tempora esse quibusdam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- team ends -->
+    <!-- Contact starts -->
+    <section id="contact" class="contact section-padding">
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center pb-5">
+                        <h2>Contact Us</h2>
+                        <p>Please get in touch and our expert support
+                            <br>team will answer all your questions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-md-12 p-0 pt-4 pb-4">
+                    <form action="#" class="bg-light p-4 m-auto">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input class="form-control" placeholder="Your name" required="text" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input class="form-control" placeholder="Email address" required="email"
+                                        type="email">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <textarea class="form-control" placeholder="How can we help you?" required="text"
+                                        rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div id="liveAlertPlaceholder"></div>
+                            <button type="button" class="btn btn-warning btn-lg btn-block mt-3" id="liveAlertBtn">Send
+                                Now</button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="bi bi-twitter"></i>
+                </a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="bi bi-google"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="bi bi-github"></i>
+                </a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div id="copyright" class="text-center p-3">
+            © 2022 Copyright:
+            <a class="text-white" href="#">Flower-Shop Flowering the World S.L. </a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+    <script src="js/users.js"></script>
+
+
+</body>
+
+</html>
