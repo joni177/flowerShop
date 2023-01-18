@@ -2,10 +2,6 @@ var express = require('express');
 var DbClient = require('../DB/DbClient')
 var router = express.Router();
 
-
-
-
-
 /* GET users listing. */
 router.get('/', function(req, res, next) {
    
