@@ -40,7 +40,6 @@ let generateShop = () => {
     .join(""));
 };
 
-generateShop();
 
 /**
  * ! used to increase the selected product item quantity by 1
