@@ -28,7 +28,9 @@ let generateShop = () => {
               <p class="lead">${price}$</p>
               <div class="buttons">
                 <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
-                <div id=${id} class="quantity">${search.item === undefined ? 0 : search.item}
+                <div id=${id} class="quantity">${
+        search.item === undefined ? 0 : search.item
+      }
               </div>
               <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
               </div>
@@ -39,7 +41,6 @@ let generateShop = () => {
     })
     .join(""));
 };
-
 
 /**
  * ! used to increase the selected product item quantity by 1
@@ -54,6 +55,7 @@ let increment = (id) => {
       id: selectedItem.id,
       item: 1,
     });
+    console.log(basket);
   } else {
     search.item += 1;
   }

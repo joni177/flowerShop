@@ -28,6 +28,7 @@ calculation();
 
 let generateCartItems = () => {
   if (basket.length !== 0) {
+    console.log(basket);
     return (ShoppingCart.innerHTML = basket
       .map((x) => {
         let { id, item } = x;
@@ -74,8 +75,8 @@ let generateCartItems = () => {
 generateCartItems();
 
 /**
-  * ! used to increase the selected product item quantity by 1
-  */
+ * ! used to increase the selected product item quantity by 1
+ */
 
 let increment = (id) => {
   let selectedItem = id;

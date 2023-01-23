@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://llfb:llfb@familybudget.zu5kqkx.mongodb.net/?retryWrites=true&w=majority";
+var url = "mongodb+srv://yon:212250369@cluster0.nise7w8.mongodb.net/?retryWrites=true&w=majority";
 var dbConnection;
 
 module.exports =  {
@@ -9,7 +9,7 @@ module.exports =  {
                console.log(err);
             }else{
                console.log("Successfully connected to MongoDB.");
-               dbConnection = db.db("FlowerShop");
+               dbConnection = db.db("flower_shop");
                
             }
             
