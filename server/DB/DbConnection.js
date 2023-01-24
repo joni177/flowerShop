@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://llfb:llfb@familybudget.zu5kqkx.mongodb.net/?retryWrites=true&w=majority";
+var url = "mongodb+srv://llfb:Aa123456@flowershop.vziqkyx.mongodb.net/?retryWrites=true&w=majority";
 var dbConnection;
 
 module.exports =  {

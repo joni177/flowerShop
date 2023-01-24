@@ -7,7 +7,7 @@ let shop = document.getElementById("shop");
  */
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
-
+let shopItemsData = JSON.parse(localStorage.getItem("shopItemsData")) || [];
 /**
  * ! Generates the shop with product cards composed of
  * ! images, title, price, buttons, description
@@ -102,4 +102,7 @@ let calculation = () => {
   cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
 
+
+
+generateShop();
 calculation();

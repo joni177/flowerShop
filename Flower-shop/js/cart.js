@@ -8,6 +8,8 @@ let label = document.getElementById("label");
  */
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
+let shopItemsData = JSON.parse(localStorage.getItem("shopItemsData")) || [];
+
 
 /**
  * ! To calculate total amount of selected Items
@@ -18,7 +20,7 @@ let calculation = () => {
   cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
 
-calculation();
+// calculation();
 
 /**
  * ! Generates the Cart Page with product cards composed of
@@ -71,7 +73,7 @@ let generateCartItems = () => {
   }
 };
 
-generateCartItems();
+// generateCartItems();
 
 /**
   * ! used to increase the selected product item quantity by 1
@@ -233,7 +235,7 @@ let TotalAmount = () => {
   } else return;
 };
 
-TotalAmount();
+// TotalAmount();
 
 /**
  * ! Used to clear cart, and remove everything from local storage
@@ -245,3 +247,8 @@ let clearCart = () => {
   calculation();
   localStorage.setItem("data", JSON.stringify(basket));
 };
+
+
+generateCartItems();
+calculation();
+TotalAmount();
