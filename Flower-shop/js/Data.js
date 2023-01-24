@@ -1,8 +1,7 @@
-
-
 //const axios = require('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js').default;
 
-  axios
+
+axios
   .get("http://localhost:3000/data")
   .then((response) => {
     console.log(response);
@@ -11,10 +10,9 @@
     // generateCartItems();
     // calculation();
     // TotalAmount();
+
   })
   .catch((err) => console.log(err));
-
-
 
 // let shopItemsData = [
 //   {

@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
    
       var query = { };
       DbClient.getDb()
-      .collection("shopItemsData")
+      .collection("flowerDeatils")
       .find(query)
       .toArray(function(err, result) {
                 if (err) {
