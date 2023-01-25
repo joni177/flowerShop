@@ -9,11 +9,11 @@ let ShoppingCart = document.getElementById("shop");
  */
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
-
+let shopItemsData = JSON.parse(localStorage.getItem("shopItemsData")) || [];
 let isAuth = JSON.parse(localStorage.getItem("user"))?.isAdmin || [];
 
 if (!isAuth) {
-    location.href = "index.html";
+  location.href = "index.html";
 }
 
 /**
@@ -22,11 +22,11 @@ if (!isAuth) {
  */
 
 let generateShop = () => {
-    return (shop.innerHTML = shopItemsData
-        .map((x) => {
-            let { id, name, desc, img, price } = x;
-            let search = basket.find((y) => y.id === id) || [];
-            return `
+  return (shop.innerHTML = shopItemsData
+    .map((x) => {
+      let { id, name, desc, img, price } = x;
+      let search = basket.find((y) => y.id === id) || [];
+      return `
         <div id=product-id-${id} class="card text-light text-center bg-white pb-2">
         <i onclick="removeItem(${id})"  class="bi bi-x-lg"></i>
           <div class="card-body text-dark">
@@ -37,7 +37,9 @@ let generateShop = () => {
               <p class="lead">${price}$</p>
               <div class="buttons">
                 <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
-                <div id=${id} class="quantity">${search.item === undefined ? 0 : search.item}
+                <div id=${id} class="quantity">${
+        search.item === undefined ? 0 : search.item
+      }
               </div>
               <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
               </div>
@@ -45,8 +47,8 @@ let generateShop = () => {
           </div>
     </div>
     `;
-        })
-        .join(""));
+    })
+    .join(""));
 };
 
 generateShop();
@@ -95,21 +97,21 @@ generateShop();
  */
 
 let increment = (id) => {
-    let selectedItem = id;
-    let search = basket.find((x) => x.id === selectedItem.id);
+  let selectedItem = id;
+  let search = basket.find((x) => x.id === selectedItem.id);
 
-    if (search === undefined) {
-        basket.push({
-            id: selectedItem.id,
-            item: 1,
-        });
-    } else {
-        search.item += 1;
-    }
+  if (search === undefined) {
+    basket.push({
+      id: selectedItem.id,
+      item: 1,
+    });
+  } else {
+    search.item += 1;
+  }
 
-    console.log(basket);
-    update(selectedItem.id);
-    localStorage.setItem("data", JSON.stringify(basket));
+  console.log(basket);
+  update(selectedItem.id);
+  localStorage.setItem("data", JSON.stringify(basket));
 };
 
 /**
@@ -117,19 +119,19 @@ let increment = (id) => {
  */
 
 let decrement = (id) => {
-    let selectedItem = id;
-    let search = basket.find((x) => x.id === selectedItem.id);
+  let selectedItem = id;
+  let search = basket.find((x) => x.id === selectedItem.id);
 
-    if (search === undefined) return;
-    else if (search.item === 0) return;
-    else {
-        search.item -= 1;
-    }
+  if (search === undefined) return;
+  else if (search.item === 0) return;
+  else {
+    search.item -= 1;
+  }
 
-    update(selectedItem.id);
-    basket = basket.filter((x) => x.item !== 0);
-    console.log(basket);
-    localStorage.setItem("data", JSON.stringify(basket));
+  update(selectedItem.id);
+  basket = basket.filter((x) => x.item !== 0);
+  console.log(basket);
+  localStorage.setItem("data", JSON.stringify(basket));
 };
 
 /**
@@ -137,9 +139,9 @@ let decrement = (id) => {
  */
 
 let update = (id) => {
-    let search = basket.find((x) => x.id === id);
-    document.getElementById(id).innerHTML = search.item;
-    calculation();
+  let search = basket.find((x) => x.id === id);
+  document.getElementById(id).innerHTML = search.item;
+  calculation();
 };
 
 /**
@@ -147,8 +149,8 @@ let update = (id) => {
  */
 
 let calculation = () => {
-    let cartIcon = document.getElementById("cartAmount");
-    cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
+  let cartIcon = document.getElementById("cartAmount");
+  cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
 
 calculation();
@@ -159,13 +161,58 @@ calculation();
  */
 
 let removeItem = (id) => {
-    let selectedItem = id;
-    console.log(selectedItem);
-    // var myobjArr = document.getElementsByClassName(selector);
-    // myobjArr[0].remove();
-    basket = basket.filter((x) => x.id !== selectedItem.id);
+  let selectedItem = id;
+  console.log(selectedItem);
+  // var myobjArr = document.getElementsByClassName(selector);
+  // myobjArr[0].remove();
+  basket = basket.filter((x) => x.id !== selectedItem.id);
 
-    generateShop();
+  generateShop();
 
-    localStorage.setItem("data", JSON.stringify(basket));
+  localStorage.setItem("data", JSON.stringify(basket));
+};
+
+let fileToBase64 = (filename, filepath) => {
+  return new Promise((resolve) => {
+    var file = new File([filename], filepath);
+    var reader = new FileReader();
+    // Read file content on file loaded event
+    reader.onload = function (event) {
+      resolve(event.target.result);
+    };
+
+    // Convert data to base64
+    reader.readAsDataURL(file);
+  });
+};
+
+function handleFileSelect(evt) {
+    var f = evt.target.files[0]; // FileList object
+    var reader = new FileReader();
+    // Closure to capture the file information.
+    reader.onload = (function(theFile) {
+      return function(e) {
+        var binaryData = e.target.result;
+        //Converting Binary Data to base 64
+        var base64String = window.btoa(binaryData);
+        //showing file converted to base64
+        document.getElementById('base64').value = base64String;
+        alert('File converted to base64 successfuly!\nCheck in Textarea');
+      };
+    })(f);
+    // Read in the image file as a data URL.
+    reader.readAsBinaryString(f);
+}
+
+let checkoutFunction = (id) => {
+  let newItem = {};
+
+  newItem.name = document.getElementById("validationCustom01").value;
+  newItem.id = newItem.name;
+  newItem.price = document.getElementById("validationCustom02").value;
+  newItem.desc = document.getElementById("validationCustom03").value;
+  newItem.img = document.getElementById("formFile").value;
+  fileToBase64(newItem.img.split("\\").pop(), newItem.img).then((result) => {
+    console.log(result);
+  });
 };
