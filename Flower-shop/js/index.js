@@ -3,6 +3,8 @@ function myFunction() {
     alert("Thank you! We receive your email");
 }
 
+
+
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
 const alert = (message, type) => {

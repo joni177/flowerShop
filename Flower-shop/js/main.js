@@ -7,13 +7,12 @@ let shop = document.getElementById("shop");
  */
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
-let shopItemsData = JSON.parse(localStorage.getItem("shopItemsData")) || [];
 /**
  * ! Generates the shop with product cards composed of
  * ! images, title, price, buttons, description
  */
 
-let generateShop = () => {
+let generateShop = (shopItemsData) => {
   return (shop.innerHTML = shopItemsData
     .map((x) => {
       let { id, name, desc, img, price } = x;
@@ -106,5 +105,24 @@ let calculation = () => {
 
 
 
-generateShop();
-calculation();
+
+let pageRender = (shopItemsData) => {
+  generateShop(shopItemsData);
+  calculation();
+}
+
+
+let loadCatalog = () => {
+axios
+  .get("http://localhost:3000/data" )
+  .then((response) => {
+    console.log(response);
+    pageRender(response.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  } );
+
+}
+
+loadCatalog();

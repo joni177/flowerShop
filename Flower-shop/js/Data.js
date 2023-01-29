@@ -1,16 +1,23 @@
 //const axios = require('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js').default;
 
+let shopItemsDatafromserver = [{}];
+localStorage.setItem("shopItemsData", shopItemsDatafromserver);
+let loadCatalog = () => {
 axios
   .get("http://localhost:3000/data")
   .then((response) => {
     console.log(response);
-    shopItemsData = response.data;
-    localStorage.setItem("shopItemsData", JSON.stringify(shopItemsData));
-    //generateCartItems();
-    //calculation();
-    // TotalAmount();
+    shopItemsDatafromserver = response.data;
+    localStorage.setItem("shopItemsData", JSON.stringify(shopItemsDatafromserver));
+    alert("data load");
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.log(err);
+  } );
+
+}
+
+
 
 // let shopItemsData = [
 //   {

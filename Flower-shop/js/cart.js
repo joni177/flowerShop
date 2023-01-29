@@ -8,7 +8,6 @@ let label = document.getElementById("label");
  */
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
-let shopItemsData = JSON.parse(localStorage.getItem("shopItemsData")) || [];
 
 
 /**
@@ -28,7 +27,7 @@ let calculation = () => {
  * ? When basket is blank -> show's Cart is Empty
  */
 
-let generateCartItems = () => {
+let generateCartItems = (shopItemsData) => {
   if (basket.length !== 0) {
     console.log(basket);
     return (ShoppingCart.innerHTML = basket
@@ -250,6 +249,26 @@ let clearCart = () => {
 };
 
 
-generateCartItems();
-calculation();
-TotalAmount();
+
+
+let pageRender = (shopItemsData) => {
+  generateCartItems(shopItemsData);
+  calculation();
+  TotalAmount();
+}
+
+
+let loadCatalog = () => {
+axios
+  .get("http://localhost:3000/data" )
+  .then((response) => {
+    console.log(response);
+    pageRender(response.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  } );
+
+}
+
+loadCatalog();

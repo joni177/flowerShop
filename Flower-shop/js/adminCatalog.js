@@ -1,3 +1,4 @@
+
 let shop = document.getElementById("shop");
 let label = document.getElementById("label");
 let ShoppingCart = document.getElementById("shop");
@@ -9,7 +10,6 @@ let ShoppingCart = document.getElementById("shop");
  */
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
-let shopItemsData = JSON.parse(localStorage.getItem("shopItemsData")) || [];
 let isAuth = JSON.parse(localStorage.getItem("user"))?.isAdmin || [];
 
 if (!isAuth) {
@@ -21,7 +21,7 @@ if (!isAuth) {
  * ! images, title, price, buttons, description
  */
 
-let generateShop = () => {
+let generateShop = (shopItemsData) => {
   return (shop.innerHTML = shopItemsData
     .map((x) => {
       let { id, name, desc, img, price } = x;
@@ -51,7 +51,7 @@ let generateShop = () => {
     .join(""));
 };
 
-generateShop();
+
 
 // let generateCartItems = () => {
 //     if (basket.length !== 0) {
@@ -153,66 +153,89 @@ let calculation = () => {
   cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
 
-calculation();
 
 /**
  * ! Used to remove 1 selected product card from basket
  * ! using the X [cross] button
  */
 
-let removeItem = (id) => {
-  let selectedItem = id;
+let removeItem = (idForDelete) => {
+  let selectedItem = idForDelete.id;
   console.log(selectedItem);
   // var myobjArr = document.getElementsByClassName(selector);
   // myobjArr[0].remove();
   basket = basket.filter((x) => x.id !== selectedItem.id);
 
-  generateShop();
-
   localStorage.setItem("data", JSON.stringify(basket));
-};
-
-let fileToBase64 = (filename, filepath) => {
-  return new Promise((resolve) => {
-    var file = new File([filename], filepath);
-    var reader = new FileReader();
-    // Read file content on file loaded event
-    reader.onload = function (event) {
-      resolve(event.target.result);
-    };
-
-    // Convert data to base64
-    reader.readAsDataURL(file);
+  var payload = { "id" : selectedItem}
+  axios.delete("http://localhost:3000/data/deleteItem", { data: payload }).then(function (response) {
+    alert(response);
+    location.reload();
+  })
+  .catch(function (error) {
+   console.log(error);
   });
 };
 
-function handleFileSelect(evt) {
-    var f = evt.target.files[0]; // FileList object
-    var reader = new FileReader();
-    // Closure to capture the file information.
-    reader.onload = (function(theFile) {
-      return function(e) {
-        var binaryData = e.target.result;
-        //Converting Binary Data to base 64
-        var base64String = window.btoa(binaryData);
-        //showing file converted to base64
-        document.getElementById('base64').value = base64String;
-        alert('File converted to base64 successfuly!\nCheck in Textarea');
+
+const convertBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+          createNewItem(fileReader.result);
+          resolve(fileReader.result);
       };
-    })(f);
-    // Read in the image file as a data URL.
-    reader.readAsBinaryString(f);
-}
+
+      fileReader.onerror = (error) => {
+          reject(error);
+      };
+  });
+};
+
 
 let checkoutFunction = (id) => {
-  let newItem = {};
+  const file = (document.getElementById("formFile")).files[0];
+   convertBase64(file);
+};
 
+let createNewItem = (img) => {
+  let newItem = {};
   newItem.name = document.getElementById("validationCustom01").value;
   newItem.id = newItem.name;
   newItem.price = document.getElementById("validationCustom02").value;
   newItem.desc = document.getElementById("validationCustom03").value;
-  newItem.img = document.getElementById("formFile").value;
-  fileToBase64(newItem.img.split("\\").pop(), newItem.img).then((result) => {
-    console.log(result);
+  newItem.img =  img;
+  console.log(newItem);
+  axios.post("http://localhost:3000/data/newItem", newItem)
+  .then(function (response) {
+    location.reload();
+  })
+  .catch(function (error) {
+    console.log(error);
   });
-};
+}
+
+
+let pageRender = (shopItemsData) => {
+  generateShop(shopItemsData);
+  calculation();
+  
+}
+
+
+let loadCatalog = () => {
+axios
+  .get("http://localhost:3000/data" )
+  .then((response) => {
+    console.log(response);
+    pageRender(response.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  } );
+
+}
+
+loadCatalog();
