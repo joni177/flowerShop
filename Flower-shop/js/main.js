@@ -110,11 +110,12 @@ let pageRender = (shopItemsData) => {
   generateShop(shopItemsData);
   calculation();
 }
-
+const cacheBuster = (url) => `${url}?cb=${Date.now()}`;
 
 let loadCatalog = () => {
+  
 axios
-  .get("http://localhost:3000/data" )
+  .get(cacheBuster("http://localhost:3000/data" ))
   .then((response) => {
     console.log(response);
     pageRender(response.data);

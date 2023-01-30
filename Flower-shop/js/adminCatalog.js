@@ -21,6 +21,12 @@ if (!isAuth) {
  * ! images, title, price, buttons, description
  */
 
+let IdToEdit = "";
+
+let addIdToEdit = (e) =>{
+  IdToEdit = e.id 
+}
+
 let generateShop = (shopItemsData) => {
   return (shop.innerHTML = shopItemsData
     .map((x) => {
@@ -28,8 +34,9 @@ let generateShop = (shopItemsData) => {
       let search = basket.find((y) => y.id === id) || [];
       return `
         <div id=product-id-${id} class="card text-light text-center bg-white pb-2">
-        <i onclick="removeItem(${id})"  class="bi bi-x-lg"></i>
-          <div class="card-body text-dark">
+        <i onclick="addIdToEdit(${id})" data-bs-toggle="modal" data-bs-target="#editingFlower"><button type="button" class="btn btn-secondary">Editing</button></i>
+                
+        <div class="card-body text-dark">
               <div class="img-area mb-4">
                 <img src=${img} class="img-fluid" alt="">
               </div>
@@ -159,8 +166,10 @@ let calculation = () => {
  * ! using the X [cross] button
  */
 
-let removeItem = (idForDelete) => {
-  let selectedItem = idForDelete.id;
+
+
+let removeItem = () => {
+  let selectedItem = IdToEdit;
   console.log(selectedItem);
   // var myobjArr = document.getElementsByClassName(selector);
   // myobjArr[0].remove();
@@ -176,6 +185,50 @@ let removeItem = (idForDelete) => {
    console.log(error);
   });
 };
+
+
+let edit = (image) => {
+
+  let newItem = {};
+  newItem.name = document.getElementById("nameedit").value;
+  newItem.id = IdToEdit;
+  newItem.price = document.getElementById("priceedit").value;
+  newItem.desc = document.getElementById("desedit").value;
+  newItem.img =  image;
+  console.log(newItem);
+  axios.post("http://localhost:3000/data/editItem", newItem)
+  .then(function (response) {
+    location.reload();
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+}
+
+let editFunction = () => {
+  const file = (document.getElementById("imageedit")).files[0];
+  convertBase64edit(file);
+};
+
+
+const convertBase64edit = (file) => {
+  return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        edit(fileReader.result);
+          resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+          reject(error);
+      };
+  });
+};
+
 
 
 const convertBase64 = (file) => {

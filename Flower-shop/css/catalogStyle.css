@@ -213,7 +213,7 @@ a {
   font-size: 60px;
   font-weight: bold;
   color: green;
-  position: absolute;
+  /* position: absolute; */
   top: 1950px;
   right: 260px;
 }
