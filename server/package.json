@@ -13,6 +13,7 @@
     "jade": "~1.11.0",
     "mogodb": "^0.0.1-security",
     "mongodb": "^4.13.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "nocache": "^3.0.4"
   }
 }

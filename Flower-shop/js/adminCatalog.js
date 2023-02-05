@@ -160,25 +160,15 @@ let calculation = () => {
   cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
 
-
-/**
- * ! Used to remove 1 selected product card from basket
- * ! using the X [cross] button
- */
-
-
-
 let removeItem = () => {
   let selectedItem = IdToEdit;
-  console.log(selectedItem);
-  // var myobjArr = document.getElementsByClassName(selector);
-  // myobjArr[0].remove();
-  basket = basket.filter((x) => x.id !== selectedItem.id);
 
+  basket = basket.filter((x) => x.id !== selectedItem.id);
   localStorage.setItem("data", JSON.stringify(basket));
+
   var payload = { "id" : selectedItem}
-  axios.delete("http://localhost:3000/data/deleteItem", { data: payload }).then(function (response) {
-    alert(response);
+  axios.delete("http://localhost:3000/data/deleteItem", { data: payload })
+  .then(function (response) {
     location.reload();
   })
   .catch(function (error) {
@@ -209,26 +199,8 @@ let edit = (image) => {
 
 let editFunction = () => {
   const file = (document.getElementById("imageedit")).files[0];
-  convertBase64edit(file);
+  convertBase64(file).then( (image) => { edit(image); } );
 };
-
-
-const convertBase64edit = (file) => {
-  return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        edit(fileReader.result);
-          resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-          reject(error);
-      };
-  });
-};
-
 
 
 const convertBase64 = (file) => {
@@ -237,7 +209,6 @@ const convertBase64 = (file) => {
       fileReader.readAsDataURL(file);
 
       fileReader.onload = () => {
-          createNewItem(fileReader.result);
           resolve(fileReader.result);
       };
 
@@ -250,7 +221,7 @@ const convertBase64 = (file) => {
 
 let checkoutFunction = (id) => {
   const file = (document.getElementById("formFile")).files[0];
-   convertBase64(file);
+   convertBase64(file).then( (image) => { createNewItem(image); } );;
 };
 
 let createNewItem = (img) => {
@@ -278,9 +249,11 @@ let pageRender = (shopItemsData) => {
 }
 
 
+const cacheBuster = (url) => `${url}?cb=${Date.now()}`;
+
 let loadCatalog = () => {
 axios
-  .get("http://localhost:3000/data" )
+  .get(cacheBuster("http://localhost:3000/data") )
   .then((response) => {
     console.log(response);
     pageRender(response.data);
